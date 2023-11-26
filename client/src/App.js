@@ -3,10 +3,11 @@ import './App.css';
 
 function App() {
   const [videoId, setVideoId] = useState('');
+  const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:3000';
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    window.open(`http://localhost:3000/video/${videoId}`, '_blank');
+    window.open(`${API_URL}/video/${videoId}`, '_blank');
   };
   
   return (
