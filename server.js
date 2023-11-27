@@ -11,16 +11,17 @@ app.set('view engine', 'ejs');
 app.get('/', (req, res) => {
     res.send('Hello MERN World!');
 });
-app.get('/video/:id', (req, res) => {
-    let videoId = req.params.id;
 
+app.get('/video', (req, res) => {
+    let videoId = req.query.id;
+    videoId = decodeURIComponent(videoId); // Decode the videoId
+    console.log({videoId},videoId.includes('youtube.com'))
     // Check if the ID is actually a full YouTube URL
     if (videoId.includes('youtube.com')) {
         // Extract the 'v' parameter from the URL
         const urlParams = new URLSearchParams(new URL(videoId).search);
         videoId = urlParams.get('v');
     }
-    
     // Check if videoId is valid before rendering
     if (videoId) {
         res.render('video', { videoId: videoId });

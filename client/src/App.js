@@ -7,8 +7,9 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    window.open(`${API_URL}/video/${videoId}`, '_blank');
-  };
+    const encodedVideoId = encodeURIComponent(videoId);
+    window.open(`${API_URL}/video?id=${encodedVideoId}`, '_blank');
+  }; 
   
   return (
     <div className="App">
