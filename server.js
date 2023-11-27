@@ -15,7 +15,6 @@ app.get('/', (req, res) => {
 app.get('/video', (req, res) => {
     let videoId = req.query.id;
     videoId = decodeURIComponent(videoId); // Decode the videoId
-    console.log({videoId},videoId.includes('youtube.com'))
     // Check if the ID is actually a full YouTube URL
     if (videoId.includes('youtube.com')) {
         // Extract the 'v' parameter from the URL
